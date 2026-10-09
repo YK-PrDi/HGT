@@ -93,7 +93,7 @@ const sendMessage = async () => {
 
     // AI 回复
     const response = await axios.post(
-      `http://localhost:8080/api/chat/${roomId.value}/send`,
+      `${import.meta.env.VITE_API_BASE}/chat/${roomId.value}/send`,
       null,
       { params: { message: inputMessage.value } }
     )

@@ -6,6 +6,7 @@ import com.volcengine.ark.runtime.model.completion.chat.ChatCompletionRequest;
 import com.volcengine.ark.runtime.model.completion.chat.ChatMessage;
 import com.volcengine.ark.runtime.model.completion.chat.ChatMessageRole;
 import com.volcengine.ark.runtime.service.ArkService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,6 +22,10 @@ public class AiManager {
     // AI 调用客服端
     @Resource
     private ArkService arkService;
+
+    // 方舟推理接入点 ID，从配置读取，默认值为原接入点
+    @Value("${ai.model:ep-20260611171655-lx4xw}")
+    private String model;
 
     /**
      * 聊天（只允许传入系统预设和用户预设）
@@ -48,7 +53,7 @@ public class AiManager {
         // 单次调用
         ChatCompletionRequest chatCompletionRequest = ChatCompletionRequest.builder()
                 // 指定您创建的方舟推理接入点 ID，此处已帮您修改为您的推理接入点 ID
-                .model("ep-20260611171655-lx4xw")
+                .model(model)
                 .messages(chatMessageList)
                 .build();
 

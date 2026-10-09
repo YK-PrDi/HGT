@@ -48,6 +48,8 @@
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
+            <!-- 2.7.6 自带的 1.18.24 不兼容 JDK 21 编译 -->
+            <version>1.18.34</version>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -86,7 +88,7 @@
                 <version>${spring-boot.version}</version>
                 <configuration>
                     <mainClass>com.yike.haiguitang.HaiguitangApplication</mainClass>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>
